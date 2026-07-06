@@ -1,0 +1,53 @@
+name: InfraBuild
+on: workflow_dispatch
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  TerraformPlan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.1.0
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: GitHubTerraformSession
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4.0.1
+      - name: Terraform Initialize & Plan
+        run: |
+          terraform init
+          terraform plan -out ${{ vars.PROJECT_NAME }}.tfplan
+      - name: Upload Terraform Plan
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ vars.PROJECT_NAME }}TerraformPlan
+          path: ./${{ vars.PROJECT_NAME }}.tfplan
+          archive: false
+  TerraformApply:
+    needs: TerraformPlan
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.1.0
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: GitHubTerraformSession
+      - name: Download Terraform Plan
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ vars.PROJECT_NAME }}.tfplan
+          path: ./
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4.0.1
+      - name: Terraform Apply
+        run: |
+          terraform init
+          terraform apply ${{ vars.PROJECT_NAME }}.tfplan
