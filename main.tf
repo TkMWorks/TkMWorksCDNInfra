@@ -21,3 +21,8 @@ resource "aws_route53_record" "certificate_validation_records" {
   type            = each.value.type
   zone_id         = data.aws_route53_zone.route53_public_hosted_zone.zone_id
 }
+
+resource "aws_acm_certificate_validation" "certificate_validation" {
+  certificate_arn         = aws_acm_certificate.tkmworks_dns_certificate.arn
+  validation_record_fqdns = [for record in aws_route53_record.certificate_validation_records : record.fqdn]
+}
