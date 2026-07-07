@@ -28,7 +28,6 @@ resource "aws_cloudfront_distribution" "tkmworks_cf_distribution" {
   enabled             = true
   comment             = "TkMWorks Centralized CloudFront Distribution"
   is_ipv6_enabled     = true
-  default_root_object = "index.html"
   aliases = [
     "websites.${var.custom_domain_name}"
   ]
