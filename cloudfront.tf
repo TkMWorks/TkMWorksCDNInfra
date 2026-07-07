@@ -6,6 +6,24 @@ resource "aws_cloudfront_origin_access_control" "s3_bucket_oac" {
   signing_protocol                  = "sigv4"
 }
 
+resource "aws_cloudfront_function" "strip_site_prefix" {
+  name    = "strip-site-prefix"
+  runtime = "cloudfront-js-2.0"
+  publish = true
+  code    = <<-EOT
+    function handler(event) {
+      var request = event.request;
+      var uri = request.uri;
+      // Strip the first path segment, e.g. /markdownviewer/index.html -> /index.html
+      var match = uri.match(/^\/[^\/]+(\/.*)$/);
+      if (match) {
+        request.uri = match[1];
+      }
+      return request;
+    }
+  EOT
+}
+
 resource "aws_cloudfront_distribution" "tkmworks_cf_distribution" {
   enabled             = true
   comment             = "TkMWorks Centralized CloudFront Distribution"
@@ -37,6 +55,10 @@ resource "aws_cloudfront_distribution" "tkmworks_cf_distribution" {
       cached_methods         = ["GET", "HEAD"]
       compress               = true
       cache_policy_id        = data.aws_cloudfront_cache_policy.managed_cache_policy.id
+      function_association {
+        event_type   = "viewer-request"
+        function_arn = aws_cloudfront_function.strip_site_prefix.arn
+      }
     }
   }
   default_cache_behavior {
