@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TkMWorks — Sites we build &amp; host</title>
+<meta name="description" content="TkMWorks builds custom software and hosts it on lean, cost-effective AWS architecture. This is the directory of what's live.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="nav">
+  <a href="#top" class="nav-brand">
+    <img src="logo.png" alt="TkMWorks" class="nav-mark">
+    <span class="nav-word">TkM<span class="nav-word-light">Works</span></span>
+  </a>
+  <nav class="nav-links">
+    <a href="#sites">Sites</a>
+    <a href="#services">Services</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">CUSTOM SOLUTIONS &middot; AWS-HOSTED</p>
+    <h1>One AWS account.<br>Every site we ship.</h1>
+    <p class="hero-sub">TkMWorks builds custom software and hosts it on lean, cost-effective AWS architecture. This page is the directory of what's live &mdash; and what's next.</p>
+
+    <div class="terminal" role="img" aria-label="Command line output listing the sites TkMWorks currently hosts">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span class="terminal-title">tkmworks &mdash; org status</span>
+      </div>
+      <div class="terminal-body">
+        <p class="t-line t-cmd"><span class="t-prompt">$</span> tkmworks list-sites --org</p>
+        <p class="t-line t-out t-o1"><span class="t-live">&#9679; LIVE</span>  markdownviewer&nbsp;&nbsp;&nbsp;&nbsp;s3+cloudfront&nbsp;&nbsp;&nbsp;&nbsp;~$0.30/mo</p>
+        <p class="t-line t-out t-o2"><span class="t-live">&#9679; LIVE</span>  rr-shutterworks&nbsp;&nbsp;&nbsp;s3+cloudfront&nbsp;&nbsp;&nbsp;&nbsp;~$0.75/mo</p>
+        <p class="t-line t-out t-o3 t-dim">&#8942; 1 more pipeline: pending</p>
+        <p class="t-line t-cmd t-cursor"><span class="t-prompt">$</span><span class="cursor">&nbsp;</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITES -->
+  <section class="sites" id="sites">
+    <p class="section-eyebrow">SITES WE HOST</p>
+    <h2 class="section-title">Live right now</h2>
+
+    <div class="site-grid">
+
+      <article class="site-card">
+        <div class="preview preview-md" aria-hidden="true">
+          <div class="preview-pane preview-src">
+            <span class="ln ln-h"># Notes</span>
+            <span class="ln"></span>
+            <span class="ln">Quick things to</span>
+            <span class="ln">**remember** today.</span>
+            <span class="ln"></span>
+            <span class="ln">- [ ] Ship it</span>
+          </div>
+          <div class="preview-pane preview-out">
+            <span class="out-h">Notes</span>
+            <span class="out-p">Quick things to <b>remember</b> today.</span>
+            <span class="out-li">&#9634; Ship it</span>
+          </div>
+        </div>
+        <div class="site-body">
+          <div class="site-head">
+            <h3>MarkdownViewer</h3>
+            <span class="status-pill">&#9679; live</span>
+          </div>
+          <p>A fast, distraction-free Markdown editor and previewer that runs entirely in the browser. Paste, write, or drop a file &mdash; see the rendered output instantly, no server round-trip.</p>
+          <div class="tag-row">
+            <span class="tag">Static</span>
+            <span class="tag">S3 + CloudFront</span>
+            <span class="tag">Client-side only</span>
+          </div>
+          <div class="site-foot">
+            <a href="https://websites.tkmworks.co.in/markdownviewer/index.html" class="site-link">Open MarkdownViewer &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="site-card">
+        <div class="preview preview-gallery" aria-hidden="true">
+          <span class="ph p1"></span><span class="ph p2"></span><span class="ph p3"></span>
+          <span class="ph p4"></span><span class="ph p5"></span><span class="ph p6"></span>
+        </div>
+        <div class="site-body">
+          <div class="site-head">
+            <h3>R&amp;R ShutterWorks Gallery</h3>
+            <span class="status-pill">&#9679; live</span>
+          </div>
+          <p>A photo gallery built for R&amp;R ShutterWorks &mdash; tuned to load fast and stay cheap to run even as the image library grows.</p>
+          <div class="tag-row">
+            <span class="tag">Static</span>
+            <span class="tag">S3 + CloudFront</span>
+            <span class="tag">Image-optimized</span>
+          </div>
+          <div class="site-foot">
+            <a href="https://websites.tkmworks.co.in/rnrshutterworks/index.html" class="site-link">View R&R ShutterWorks Gallery &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="site-card site-card-empty">
+        <div class="empty-icon">+</div>
+        <h3>Next site</h3>
+        <p>In the pipeline. Every project hosted here starts the same way &mdash; a real problem, a lean architecture, and a bill that stays small.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-eyebrow">WHAT TKMWORKS DOES</p>
+    <div class="service-cols">
+      <div class="service-col">
+        <h3>Custom solutions</h3>
+        <p>Bespoke web apps and internal tools built for the problem in front of us &mdash; not bent from a template until it almost fits. From a browser-based Markdown editor to a client's photo gallery, each one is scoped, built, and shipped on its own terms.</p>
+      </div>
+      <div class="service-col">
+        <h3>Cost-effective AWS hosting</h3>
+        <p>Static-first architecture on S3 and CloudFront, one wildcard certificate covering every subdomain, and no idle compute racking up charges overnight. If a site doesn't need a server running 24/7, it doesn't get one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <p class="section-eyebrow">ABOUT</p>
+    <p class="about-lede">TkMWorks is a small, hands-on cloud practice. Every site in this directory runs on infrastructure we designed, provisioned, and pay for ourselves &mdash; so we know exactly what it costs to keep it fast and online.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="section-eyebrow">GET IN TOUCH</p>
+    <h2>Want something built<br>and hosted this way?</h2>
+    <a href="mailto:hello@tkmworks.co.in" class="contact-email">hello@tkmworks.co.in</a>
+    <p class="contact-location">Bhubaneswar, Odisha, India &middot; Working with Teams Remotely</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-brand">
+    <img src="logo.png" alt="TkMWorks" class="footer-mark">
+    <span>TkMWorks</span>
+  </div>
+  <p>&copy; 2026 TkMWorks. Cloud services &amp; solutions.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

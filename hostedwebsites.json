@@ -1,0 +1,12 @@
+{
+  "hosted_websites": {
+    "markdownviewer": {
+      "bucket_name": "tkmworks-markdownviewer",
+      "path_prefix": "markdownviewer"
+    },
+    "rnrshutterworks": {
+      "bucket_name": "tkmworks-rnrshutterworks",
+      "path_prefix": "rnrshutterworks"
+    }
+  }
+}

@@ -20,7 +20,7 @@ jobs:
       - name: Terraform Initialize & Plan
         run: |
           terraform init
-          terraform plan -out ${{ vars.PROJECT_NAME }}.tfplan
+          terraform plan -var-file hostedwebsites.json -out ${{ vars.PROJECT_NAME }}.tfplan
       - name: Upload Terraform Plan
         uses: actions/upload-artifact@v7
         with:
