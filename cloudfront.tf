@@ -17,7 +17,7 @@ resource "aws_cloudfront_distribution" "tkmworks_cf_distribution" {
   dynamic "origin" {
     for_each = var.hosted_websites
     content {
-      domain_name              = data.aws_s3_bucket.s3_origin_buckets[each.key].bucket_regional_domain_name
+      domain_name              = data.aws_s3_bucket.s3_origin_buckets[origin.key].bucket_regional_domain_name
       origin_id                = origin.key
       origin_access_control_id = aws_cloudfront_origin_access_control.s3_bucket_oac.id
     }
@@ -26,7 +26,7 @@ resource "aws_cloudfront_distribution" "tkmworks_cf_distribution" {
     for_each = var.hosted_websites
     content {
       path_pattern           = "/${ordered_cache_behavior.value.path_prefix}/*"
-      target_origin_id       = "S3-${data.aws_s3_bucket.s3_origin_buckets[each.key].id}"
+      target_origin_id       = "S3-${data.aws_s3_bucket.s3_origin_buckets[ordered_cache_behavior.key].id}"
       viewer_protocol_policy = "redirect-to-https"
       allowed_methods        = ["GET", "HEAD", "OPTIONS"]
       cached_methods         = ["GET", "HEAD"]
