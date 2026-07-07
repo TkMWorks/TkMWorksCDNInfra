@@ -69,3 +69,10 @@ resource "aws_route53_record" "cloudfront_route53_record" {
   ttl     = 300
   records = [aws_cloudfront_distribution.tkmworks_cf_distribution.domain_name]
 }
+
+resource "aws_ssm_parameter" "cloudfront_distribution_id" {
+  name        = "/tkmworks/websites/cloudfront/id"
+  description = "CloudFront ID of TkMWorks Centralized CloudFront Distribution"
+  type        = "String"
+  value       = aws_cloudfront_distribution.tkmworks_cf_distribution.id
+}
