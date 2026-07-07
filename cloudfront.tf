@@ -18,13 +18,13 @@ resource "aws_cloudfront_distribution" "tkmworks_cf_distribution" {
     for_each = var.hosted_websites
     content {
       domain_name              = data.aws_s3_bucket.s3_origin_buckets[origin.key].bucket_regional_domain_name
-      origin_id                = origin.key
+      origin_id                = "S3-${data.aws_s3_bucket.s3_origin_buckets[origin.key].id}"
       origin_access_control_id = aws_cloudfront_origin_access_control.s3_bucket_oac.id
     }
   }
   origin {
-    domain_name = aws_s3_bucket.home_s3_bucket.bucket_regional_domain_name
-    origin_id = "Home"
+    domain_name              = aws_s3_bucket.home_s3_bucket.bucket_regional_domain_name
+    origin_id                = "S3-${aws_s3_bucket.home_s3_bucket.id}"
     origin_access_control_id = aws_cloudfront_origin_access_control.s3_bucket_oac.id
   }
   dynamic "ordered_cache_behavior" {
